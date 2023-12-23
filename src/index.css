@@ -5,3 +5,8 @@
 a.active {
   /* @apply text-blue-500  ; */
 }
+
+body,
+html {
+  transition: all 0.7s ease-in;
+}

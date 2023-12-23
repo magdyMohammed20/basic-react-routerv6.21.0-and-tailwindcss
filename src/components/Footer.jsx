@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-slate-900">
+    <footer className="bg-slate-900 dark:bg-slate-800">
       <div className="mx-auto w-full max-w-screen-lg p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -10,7 +10,7 @@ const Footer = () => {
                 className="h-8 me-3"
                 alt="FlowBite Logo"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-100">
                 Flowbite
               </span>
             </a>
@@ -36,7 +36,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">
                 Follow us
               </h2>
               <ul className="text-gray-100 dark:text-gray-300 font-medium">
@@ -57,7 +57,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">
                 Legal
               </h2>
               <ul className="text-gray-100 dark:text-gray-300 font-medium">

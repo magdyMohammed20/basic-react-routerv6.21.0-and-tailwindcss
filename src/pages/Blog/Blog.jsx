@@ -6,10 +6,10 @@ const Blog = () => {
   const dataMap = data.map((img) => <img src={img.url} key={img.id} />);
   return (
     <div
-      className="p-6 mt-10"
+      className="p-6 pt-10 dark:bg-gray-900 ease-in-out duration-300"
       style={{
         display: "grid",
-        gridTemplateColumns: "auto auto auto",
+        gridTemplateColumns: "repeat(5 , auto)",
         gridGap: 30,
       }}>
       {dataMap}
