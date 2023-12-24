@@ -95,7 +95,7 @@ const Navbar = () => {
                 checked={theme}
                 onChange={handleThemeToggle}
               />
-              <div className="toggle__line w-12 h-6 bg-gray-700 dark:bg-gray-600 rounded-full shadow-inner flex justify-between items-center">
+              <div className="border border-solid border-2 border-slate-400 dark:border-indigo-500 toggle__line w-12 h-6 bg-gray-200  dark:bg-gray-600 rounded-full shadow-inner flex justify-between items-center">
                 <span className="ps-1">
                   {" "}
                   <SunMedium size={18} className="text-yellow-600" />
@@ -107,7 +107,7 @@ const Navbar = () => {
               </div>
               <div
                 style={{ top: "0px" }}
-                className={`toggle__dot ease-in-out duration-300 absolute w-6 h-6 bg-white dark:bg-gray-500 rounded-full shadow inset-y-0 ${
+                className={`toggle__dot ease-in-out duration-300 absolute w-6 h-6 bg-indigo-400 dark:bg-gray-500 rounded-full shadow inset-y-0 ${
                   theme == "light" ? "left-0" : "translate-x-6"
                 }`}></div>
             </div>

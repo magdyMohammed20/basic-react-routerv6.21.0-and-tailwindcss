@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../../utils/context";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { login, user } = useAuth();
+  const { login } = useAuth();
 
   const [userData, setUserData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const location = useLocation();
-  useEffect(() => {
-    if (Object.keys(user).length > 0) {
-      navigate("/profile");
-    }
-
-    console.log(location);
-  }, [user]);
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -68,6 +60,7 @@ const Login = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   login(userData);
+                  navigate("/profile", { replace: true });
                 }}
                 className="w-full text-white bg-indigo-600   font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
                 Sign in
