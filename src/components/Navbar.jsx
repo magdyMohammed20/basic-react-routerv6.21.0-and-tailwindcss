@@ -83,6 +83,12 @@ const Navbar = () => {
             Profile
           </NavLink>
         )}
+
+        {Object.keys(user).length != 0 && (
+          <NavLink to="todo" className={handleActive}>
+            Todo
+          </NavLink>
+        )}
       </div>
       <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
         <div className="p-4">

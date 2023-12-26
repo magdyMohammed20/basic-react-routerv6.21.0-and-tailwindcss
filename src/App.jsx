@@ -15,6 +15,7 @@ import Profile from "./pages/profile/Profile.jsx";
 import RequireAuth from "./utils/requireAuth.jsx";
 import { useAuth } from "./utils/context.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
+import Todos from "./pages/Todos/Todos.jsx";
 function App() {
   const { user } = useAuth();
 
@@ -35,7 +36,14 @@ function App() {
             </RequireAuth>
           }
         />
-
+        <Route
+          path="todo"
+          element={
+            <RequireAuth>
+              <Todos />
+            </RequireAuth>
+          }
+        />
         <Route
           path="blog"
           element={
