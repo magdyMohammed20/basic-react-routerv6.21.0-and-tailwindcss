@@ -33,6 +33,7 @@ const TodosItems = () => {
             key={index}
             className="mb-2 dark:text-slate-400 flex justify-between items-center">
             <span
+              className={`${todo.checked ? "text-gray-400 font-bold" : ""}`}
               style={{
                 textDecoration: todo.checked ? "line-through" : "none",
               }}>

@@ -6,33 +6,59 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import Layout from "./Layout.jsx";
-import Home from "./pages/Home/Home.jsx";
-import About from "./pages/About/About.jsx";
-import Blog from "./pages/Blog/Blog.jsx";
 import { fetchImages } from "./functions/api/functions.js";
-import Login from "./pages/authentication/login/Login.jsx";
-import Profile from "./pages/profile/Profile.jsx";
 import RequireAuth from "./utils/requireAuth.jsx";
 import { useAuth } from "./utils/context.jsx";
-import NotFound from "./pages/NotFound/NotFound.jsx";
-import Todos from "./pages/Todos/Todos.jsx";
+import { Suspense, lazy } from "react";
+
+const Todos = lazy(() => import("./pages/Todos/Todos.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound.jsx"));
+const Profile = lazy(() => import("./pages/profile/Profile.jsx"));
+const Login = lazy(() => import("./pages/authentication/login/Login.jsx"));
+const Blog = lazy(() => import("./pages/Blog/Blog.jsx"));
+const About = lazy(() => import("./pages/About/About.jsx"));
+const Home = lazy(() => import("./pages/Home/Home.jsx"));
+
 function App() {
   const { user } = useAuth();
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-        <Route path="" element={<Home />} />
+        <Route
+          path=""
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home />
+            </Suspense>
+          }
+        />
         {Object.keys(user).length == 0 && (
-          <Route path="login" element={<Login />} />
+          <Route
+            path="login"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Login />
+              </Suspense>
+            }
+          />
         )}
-        <Route path="about" element={<About />} />
+        <Route
+          path="about"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <About />
+            </Suspense>
+          }
+        />
 
         <Route
           path="profile"
           element={
             <RequireAuth>
-              <Profile />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Profile />
+              </Suspense>
             </RequireAuth>
           }
         />
@@ -40,7 +66,9 @@ function App() {
           path="todo"
           element={
             <RequireAuth>
-              <Todos />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Todos />
+              </Suspense>
             </RequireAuth>
           }
         />
@@ -48,7 +76,9 @@ function App() {
           path="blog"
           element={
             <RequireAuth>
-              <Blog />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Blog />
+              </Suspense>
             </RequireAuth>
           }
           loader={fetchImages}
@@ -58,7 +88,14 @@ function App() {
             </div>
           }
         />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <NotFound />
+            </Suspense>
+          }
+        />
       </Route>
     )
   );
